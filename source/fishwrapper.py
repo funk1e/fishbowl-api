@@ -128,6 +128,13 @@ class Fishbowlapi:
 		self.response = self.get_response()
 		print self.response
 		return self.response
+	
+	def execute_query(self, query):
+                """ Execute Query """
+                xml = xmlrequests.ExecuteQuery(str(query), key=self.key).request
+                self.stream.send(msg(xml))
+                self.response = self.get_response()
+                return self.response
 
 # global functions
 def xmlparse(xml):
